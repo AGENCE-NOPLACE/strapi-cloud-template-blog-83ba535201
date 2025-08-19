@@ -1,5 +1,17 @@
 import type { Schema, Struct } from '@strapi/strapi';
 
+export interface ExpertisesMode extends Struct.ComponentSchema {
+  collectionName: 'components_expertises_modes';
+  info: {
+    displayName: 'Mode';
+  };
+  attributes: {
+    details: Schema.Attribute.Blocks & Schema.Attribute.Required;
+    etape: Schema.Attribute.Integer & Schema.Attribute.Required;
+    titre: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
 export interface SharedMedia extends Struct.ComponentSchema {
   collectionName: 'components_shared_media';
   info: {
@@ -65,6 +77,7 @@ export interface SharedSlider extends Struct.ComponentSchema {
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
+      'expertises.mode': ExpertisesMode;
       'shared.media': SharedMedia;
       'shared.quote': SharedQuote;
       'shared.rich-text': SharedRichText;

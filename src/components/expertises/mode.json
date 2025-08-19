@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_expertises_modes",
+  "info": {
+    "displayName": "Mode"
+  },
+  "options": {},
+  "attributes": {
+    "etape": {
+      "type": "integer",
+      "required": true
+    },
+    "titre": {
+      "type": "string",
+      "required": true
+    },
+    "details": {
+      "type": "blocks",
+      "required": true
+    }
+  },
+  "config": {}
+}
