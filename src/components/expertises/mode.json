@@ -5,17 +5,14 @@
   },
   "options": {},
   "attributes": {
-    "etape": {
-      "type": "integer",
-      "required": true
-    },
     "titre": {
       "type": "string",
       "required": true
     },
-    "details": {
-      "type": "blocks",
-      "required": true
+    "items": {
+      "type": "component",
+      "component": "expertises.items-mode",
+      "repeatable": true
     }
   },
   "config": {}

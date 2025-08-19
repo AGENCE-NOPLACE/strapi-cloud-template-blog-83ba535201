@@ -517,7 +517,14 @@ export interface ApiExpertiseExpertise extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
-    blocks: Schema.Attribute.DynamicZone<['expertises.mode']>;
+    blocks: Schema.Attribute.DynamicZone<
+      [
+        'expertises.mode',
+        'expertises.fournisseurs',
+        'expertises.left',
+        'expertises.avantages',
+      ]
+    >;
     cover: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &

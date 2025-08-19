@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_expertises_items_modes",
+  "info": {
+    "displayName": "items_mode"
+  },
+  "options": {},
+  "attributes": {
+    "etape": {
+      "type": "integer"
+    },
+    "titre": {
+      "type": "string"
+    },
+    "details": {
+      "type": "text"
+    }
+  },
+  "config": {}
+}

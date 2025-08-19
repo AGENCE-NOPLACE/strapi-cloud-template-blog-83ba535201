@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_expertises_avantages",
+  "info": {
+    "displayName": "avantages"
+  },
+  "options": {},
+  "attributes": {
+    "items": {
+      "type": "component",
+      "component": "expertises.items",
+      "repeatable": true
+    },
+    "titre": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}

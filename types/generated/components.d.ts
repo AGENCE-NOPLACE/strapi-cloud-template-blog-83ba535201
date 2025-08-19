@@ -1,13 +1,73 @@
 import type { Schema, Struct } from '@strapi/strapi';
 
+export interface ExpertisesAvantages extends Struct.ComponentSchema {
+  collectionName: 'components_expertises_avantages';
+  info: {
+    displayName: 'avantages';
+  };
+  attributes: {
+    items: Schema.Attribute.Component<'expertises.items', true>;
+    titre: Schema.Attribute.String;
+  };
+}
+
+export interface ExpertisesFournisseurs extends Struct.ComponentSchema {
+  collectionName: 'components_expertises_fournisseurs';
+  info: {
+    displayName: 'fournisseurs';
+  };
+  attributes: {
+    slider: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios',
+      true
+    >;
+    titre: Schema.Attribute.String;
+  };
+}
+
+export interface ExpertisesItems extends Struct.ComponentSchema {
+  collectionName: 'components_expertises_items';
+  info: {
+    displayName: 'items';
+  };
+  attributes: {
+    chiffres: Schema.Attribute.String & Schema.Attribute.Required;
+    description: Schema.Attribute.Text & Schema.Attribute.Required;
+  };
+}
+
+export interface ExpertisesItemsMode extends Struct.ComponentSchema {
+  collectionName: 'components_expertises_items_modes';
+  info: {
+    displayName: 'items_mode';
+  };
+  attributes: {
+    details: Schema.Attribute.Text;
+    etape: Schema.Attribute.Integer;
+    titre: Schema.Attribute.String;
+  };
+}
+
+export interface ExpertisesLeft extends Struct.ComponentSchema {
+  collectionName: 'components_expertises_lefts';
+  info: {
+    displayName: 'left';
+  };
+  attributes: {
+    description: Schema.Attribute.Text & Schema.Attribute.Required;
+    image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'> &
+      Schema.Attribute.Required;
+    titre: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
 export interface ExpertisesMode extends Struct.ComponentSchema {
   collectionName: 'components_expertises_modes';
   info: {
     displayName: 'Mode';
   };
   attributes: {
-    details: Schema.Attribute.Blocks & Schema.Attribute.Required;
-    etape: Schema.Attribute.Integer & Schema.Attribute.Required;
+    items: Schema.Attribute.Component<'expertises.items-mode', true>;
     titre: Schema.Attribute.String & Schema.Attribute.Required;
   };
 }
@@ -77,6 +137,11 @@ export interface SharedSlider extends Struct.ComponentSchema {
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
+      'expertises.avantages': ExpertisesAvantages;
+      'expertises.fournisseurs': ExpertisesFournisseurs;
+      'expertises.items': ExpertisesItems;
+      'expertises.items-mode': ExpertisesItemsMode;
+      'expertises.left': ExpertisesLeft;
       'expertises.mode': ExpertisesMode;
       'shared.media': SharedMedia;
       'shared.quote': SharedQuote;

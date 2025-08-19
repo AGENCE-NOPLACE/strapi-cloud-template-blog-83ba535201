@@ -45,7 +45,10 @@
     "blocks": {
       "type": "dynamiczone",
       "components": [
-        "expertises.mode"
+        "expertises.mode",
+        "expertises.fournisseurs",
+        "expertises.left",
+        "expertises.avantages"
       ]
     },
     "image": {

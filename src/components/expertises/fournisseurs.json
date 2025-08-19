@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_expertises_fournisseurs",
+  "info": {
+    "displayName": "fournisseurs"
+  },
+  "options": {},
+  "attributes": {
+    "slider": {
+      "type": "media",
+      "multiple": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "titre": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}
