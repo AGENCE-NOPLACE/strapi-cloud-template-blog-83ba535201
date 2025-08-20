@@ -48,7 +48,8 @@
         "expertises.mode",
         "expertises.fournisseurs",
         "expertises.left",
-        "expertises.avantages"
+        "expertises.avantages",
+        "expertises.prime"
       ]
     },
     "image": {

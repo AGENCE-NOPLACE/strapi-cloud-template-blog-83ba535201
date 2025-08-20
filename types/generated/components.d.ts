@@ -72,6 +72,21 @@ export interface ExpertisesMode extends Struct.ComponentSchema {
   };
 }
 
+export interface ExpertisesPrime extends Struct.ComponentSchema {
+  collectionName: 'components_expertises_primes';
+  info: {
+    displayName: 'prime';
+  };
+  attributes: {
+    description: Schema.Attribute.Blocks;
+    logo: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios',
+      true
+    >;
+    titre: Schema.Attribute.String;
+  };
+}
+
 export interface OffreOffre extends Struct.ComponentSchema {
   collectionName: 'components_offre_offres';
   info: {
@@ -157,6 +172,7 @@ declare module '@strapi/strapi' {
       'expertises.items-mode': ExpertisesItemsMode;
       'expertises.left': ExpertisesLeft;
       'expertises.mode': ExpertisesMode;
+      'expertises.prime': ExpertisesPrime;
       'offre.offre': OffreOffre;
       'shared.media': SharedMedia;
       'shared.quote': SharedQuote;

@@ -573,6 +573,7 @@ export interface ApiExpertiseExpertise extends Struct.CollectionTypeSchema {
         'expertises.fournisseurs',
         'expertises.left',
         'expertises.avantages',
+        'expertises.prime',
       ]
     >;
     children: Schema.Attribute.Relation<'oneToMany', 'api::child.child'>;
