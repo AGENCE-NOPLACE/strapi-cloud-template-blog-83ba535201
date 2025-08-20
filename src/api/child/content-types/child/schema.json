@@ -60,7 +60,8 @@
         "expertises.fournisseurs",
         "expertises.avantages",
         "expertises.items-mode",
-        "offre.offre"
+        "offre.offre",
+        "expertises.types"
       ]
     },
     "image": {

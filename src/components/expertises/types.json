@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_expertises_types",
+  "info": {
+    "displayName": "types"
+  },
+  "options": {},
+  "attributes": {
+    "titre": {
+      "type": "string"
+    },
+    "items": {
+      "type": "component",
+      "component": "expertises.item-type",
+      "repeatable": true
+    }
+  },
+  "config": {}
+}

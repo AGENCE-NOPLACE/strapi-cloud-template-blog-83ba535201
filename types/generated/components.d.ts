@@ -25,6 +25,17 @@ export interface ExpertisesFournisseurs extends Struct.ComponentSchema {
   };
 }
 
+export interface ExpertisesItemType extends Struct.ComponentSchema {
+  collectionName: 'components_expertises_item_types';
+  info: {
+    displayName: 'item_type';
+  };
+  attributes: {
+    image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    name: Schema.Attribute.String;
+  };
+}
+
 export interface ExpertisesItems extends Struct.ComponentSchema {
   collectionName: 'components_expertises_items';
   info: {
@@ -83,6 +94,17 @@ export interface ExpertisesPrime extends Struct.ComponentSchema {
       'images' | 'files' | 'videos' | 'audios',
       true
     >;
+    titre: Schema.Attribute.String;
+  };
+}
+
+export interface ExpertisesTypes extends Struct.ComponentSchema {
+  collectionName: 'components_expertises_types';
+  info: {
+    displayName: 'types';
+  };
+  attributes: {
+    items: Schema.Attribute.Component<'expertises.item-type', true>;
     titre: Schema.Attribute.String;
   };
 }
@@ -168,11 +190,13 @@ declare module '@strapi/strapi' {
     export interface ComponentSchemas {
       'expertises.avantages': ExpertisesAvantages;
       'expertises.fournisseurs': ExpertisesFournisseurs;
+      'expertises.item-type': ExpertisesItemType;
       'expertises.items': ExpertisesItems;
       'expertises.items-mode': ExpertisesItemsMode;
       'expertises.left': ExpertisesLeft;
       'expertises.mode': ExpertisesMode;
       'expertises.prime': ExpertisesPrime;
+      'expertises.types': ExpertisesTypes;
       'offre.offre': OffreOffre;
       'shared.media': SharedMedia;
       'shared.quote': SharedQuote;

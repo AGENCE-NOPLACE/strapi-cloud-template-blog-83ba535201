@@ -526,6 +526,7 @@ export interface ApiChildChild extends Struct.CollectionTypeSchema {
         'expertises.avantages',
         'expertises.items-mode',
         'offre.offre',
+        'expertises.types',
       ]
     >;
     cover: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'> &
