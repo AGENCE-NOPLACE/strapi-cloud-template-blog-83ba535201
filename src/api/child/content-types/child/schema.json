@@ -1,10 +1,10 @@
 {
   "kind": "collectionType",
-  "collectionName": "expertises",
+  "collectionName": "children",
   "info": {
-    "singularName": "expertise",
-    "pluralName": "expertises",
-    "displayName": "Expertises"
+    "singularName": "child",
+    "pluralName": "children",
+    "displayName": "child"
   },
   "options": {
     "draftAndPublish": true
@@ -12,26 +12,33 @@
   "pluginOptions": {},
   "attributes": {
     "titre_google": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "description_google": {
-      "type": "text"
+      "type": "text",
+      "required": true
     },
     "structured_google": {
-      "type": "json"
+      "type": "json",
+      "required": false
     },
     "name": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "titre": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "description": {
-      "type": "text"
+      "type": "text",
+      "required": true
     },
     "cover": {
       "type": "media",
       "multiple": false,
+      "required": true,
       "allowedTypes": [
         "images",
         "files",
@@ -40,20 +47,26 @@
       ]
     },
     "slug": {
-      "type": "uid"
+      "type": "uid",
+      "targetField": "titre",
+      "required": true
     },
     "blocks": {
       "type": "dynamiczone",
       "components": [
         "expertises.mode",
-        "expertises.fournisseurs",
         "expertises.left",
-        "expertises.avantages"
+        "expertises.items",
+        "expertises.fournisseurs",
+        "expertises.avantages",
+        "expertises.items-mode",
+        "offre.offre"
       ]
     },
     "image": {
       "type": "media",
       "multiple": false,
+      "required": true,
       "allowedTypes": [
         "images",
         "files",
@@ -61,11 +74,11 @@
         "audios"
       ]
     },
-    "children": {
+    "expertise": {
       "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::child.child",
-      "mappedBy": "expertise"
+      "relation": "manyToOne",
+      "target": "api::expertise.expertise",
+      "inversedBy": "children"
     }
   }
 }

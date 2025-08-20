@@ -506,6 +506,56 @@ export interface ApiCategoryCategory extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiChildChild extends Struct.CollectionTypeSchema {
+  collectionName: 'children';
+  info: {
+    displayName: 'child';
+    pluralName: 'children';
+    singularName: 'child';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    blocks: Schema.Attribute.DynamicZone<
+      [
+        'expertises.mode',
+        'expertises.left',
+        'expertises.items',
+        'expertises.fournisseurs',
+        'expertises.avantages',
+        'expertises.items-mode',
+        'offre.offre',
+      ]
+    >;
+    cover: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'> &
+      Schema.Attribute.Required;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    description: Schema.Attribute.Text & Schema.Attribute.Required;
+    description_google: Schema.Attribute.Text & Schema.Attribute.Required;
+    expertise: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::expertise.expertise'
+    >;
+    image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'> &
+      Schema.Attribute.Required;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::child.child'> &
+      Schema.Attribute.Private;
+    name: Schema.Attribute.String & Schema.Attribute.Required;
+    publishedAt: Schema.Attribute.DateTime;
+    slug: Schema.Attribute.UID<'titre'> & Schema.Attribute.Required;
+    structured_google: Schema.Attribute.JSON;
+    titre: Schema.Attribute.String & Schema.Attribute.Required;
+    titre_google: Schema.Attribute.String & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiExpertiseExpertise extends Struct.CollectionTypeSchema {
   collectionName: 'expertises';
   info: {
@@ -525,6 +575,7 @@ export interface ApiExpertiseExpertise extends Struct.CollectionTypeSchema {
         'expertises.avantages',
       ]
     >;
+    children: Schema.Attribute.Relation<'oneToMany', 'api::child.child'>;
     cover: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -602,6 +653,31 @@ export interface ApiGlobalGlobal extends Struct.SingleTypeSchema {
     publishedAt: Schema.Attribute.DateTime;
     siteDescription: Schema.Attribute.Text & Schema.Attribute.Required;
     siteName: Schema.Attribute.String & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiOffreOffre extends Struct.SingleTypeSchema {
+  collectionName: 'offres';
+  info: {
+    displayName: 'Accueil';
+    pluralName: 'offres';
+    singularName: 'offre';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::offre.offre'> &
+      Schema.Attribute.Private;
+    offre: Schema.Attribute.DynamicZone<['offre.offre']>;
+    publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1121,9 +1197,11 @@ declare module '@strapi/strapi' {
       'api::article.article': ApiArticleArticle;
       'api::author.author': ApiAuthorAuthor;
       'api::category.category': ApiCategoryCategory;
+      'api::child.child': ApiChildChild;
       'api::expertise.expertise': ApiExpertiseExpertise;
       'api::faq.faq': ApiFaqFaq;
       'api::global.global': ApiGlobalGlobal;
+      'api::offre.offre': ApiOffreOffre;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;

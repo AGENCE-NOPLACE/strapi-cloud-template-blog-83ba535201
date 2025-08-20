@@ -1,0 +1,21 @@
+{
+  "kind": "singleType",
+  "collectionName": "offres",
+  "info": {
+    "singularName": "offre",
+    "pluralName": "offres",
+    "displayName": "Accueil"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "offre": {
+      "type": "dynamiczone",
+      "components": [
+        "offre.offre"
+      ]
+    }
+  }
+}
