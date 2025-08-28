@@ -29,28 +29,8 @@
     "description": {
       "type": "text"
     },
-    "cover": {
-      "type": "media",
-      "multiple": false,
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ]
-    },
     "slug": {
       "type": "uid"
-    },
-    "blocks": {
-      "type": "dynamiczone",
-      "components": [
-        "expertises.mode",
-        "expertises.fournisseurs",
-        "expertises.left",
-        "expertises.avantages",
-        "expertises.prime"
-      ]
     },
     "image": {
       "type": "media",
@@ -60,6 +40,16 @@
         "files",
         "videos",
         "audios"
+      ]
+    },
+    "blocks": {
+      "type": "dynamiczone",
+      "components": [
+        "expertises.mode",
+        "expertises.fournisseurs",
+        "expertises.left",
+        "expertises.avantages",
+        "expertises.prime"
       ]
     },
     "children": {

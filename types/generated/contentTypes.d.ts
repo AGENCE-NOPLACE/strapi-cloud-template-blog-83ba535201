@@ -549,7 +549,6 @@ export interface ApiExpertiseExpertise extends Struct.CollectionTypeSchema {
       ]
     >;
     children: Schema.Attribute.Relation<'oneToMany', 'api::child.child'>;
-    cover: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
