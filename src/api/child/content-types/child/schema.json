@@ -61,7 +61,8 @@
         "expertises.avantages",
         "expertises.items-mode",
         "offre.offre",
-        "expertises.types"
+        "expertises.types",
+        "expertises.prime"
       ]
     },
     "image": {
