@@ -373,40 +373,11 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
   };
 }
 
-export interface ApiAboutAbout extends Struct.SingleTypeSchema {
-  collectionName: 'abouts';
-  info: {
-    description: 'Write about yourself and the content you create';
-    displayName: 'About';
-    pluralName: 'abouts';
-    singularName: 'about';
-  };
-  options: {
-    draftAndPublish: false;
-  };
-  attributes: {
-    blocks: Schema.Attribute.DynamicZone<
-      ['shared.media', 'shared.quote', 'shared.rich-text', 'shared.slider']
-    >;
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<'oneToMany', 'api::about.about'> &
-      Schema.Attribute.Private;
-    publishedAt: Schema.Attribute.DateTime;
-    title: Schema.Attribute.String;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-  };
-}
-
 export interface ApiArticleArticle extends Struct.CollectionTypeSchema {
   collectionName: 'articles';
   info: {
     description: 'Create your blog content';
-    displayName: 'Article';
+    displayName: 'Actualit\u00E9s';
     pluralName: 'articles';
     singularName: 'article';
   };
@@ -446,7 +417,7 @@ export interface ApiAuthorAuthor extends Struct.CollectionTypeSchema {
   collectionName: 'authors';
   info: {
     description: 'Create authors for your content';
-    displayName: 'Author';
+    displayName: 'Auteur';
     pluralName: 'authors';
     singularName: 'author';
   };
@@ -478,7 +449,7 @@ export interface ApiCategoryCategory extends Struct.CollectionTypeSchema {
   collectionName: 'categories';
   info: {
     description: 'Organize your content into categories';
-    displayName: 'Category';
+    displayName: 'Cat\u00E9gories actualit\u00E9s';
     pluralName: 'categories';
     singularName: 'category';
   };
@@ -509,7 +480,7 @@ export interface ApiCategoryCategory extends Struct.CollectionTypeSchema {
 export interface ApiChildChild extends Struct.CollectionTypeSchema {
   collectionName: 'children';
   info: {
-    displayName: 'child';
+    displayName: 'Sous expertises';
     pluralName: 'children';
     singularName: 'child';
   };
@@ -606,7 +577,7 @@ export interface ApiExpertiseExpertise extends Struct.CollectionTypeSchema {
 export interface ApiFaqFaq extends Struct.CollectionTypeSchema {
   collectionName: 'faqs';
   info: {
-    displayName: 'Faq';
+    displayName: 'FAQ';
     pluralName: 'faqs';
     singularName: 'faq';
   };
@@ -633,7 +604,7 @@ export interface ApiGlobalGlobal extends Struct.SingleTypeSchema {
   collectionName: 'globals';
   info: {
     description: 'Define global settings';
-    displayName: 'Global';
+    displayName: 'SEO Global';
     pluralName: 'globals';
     singularName: 'global';
   };
@@ -1195,7 +1166,6 @@ declare module '@strapi/strapi' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
-      'api::about.about': ApiAboutAbout;
       'api::article.article': ApiArticleArticle;
       'api::author.author': ApiAuthorAuthor;
       'api::category.category': ApiCategoryCategory;
