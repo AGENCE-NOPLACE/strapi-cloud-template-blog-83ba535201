@@ -1,0 +1,29 @@
+{
+  "kind": "collectionType",
+  "collectionName": "category_realisations",
+  "info": {
+    "singularName": "category-realisation",
+    "pluralName": "category-realisations",
+    "displayName": "Catégories réalisations"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "name"
+    },
+    "realisations": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::realisation.realisation",
+      "mappedBy": "category_realisation"
+    }
+  }
+}

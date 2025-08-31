@@ -445,6 +445,40 @@ export interface ApiAuthorAuthor extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiCategoryRealisationCategoryRealisation
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'category_realisations';
+  info: {
+    displayName: 'Cat\u00E9gories r\u00E9alisations';
+    pluralName: 'category-realisations';
+    singularName: 'category-realisation';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::category-realisation.category-realisation'
+    > &
+      Schema.Attribute.Private;
+    name: Schema.Attribute.String & Schema.Attribute.Required;
+    publishedAt: Schema.Attribute.DateTime;
+    realisations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::realisation.realisation'
+    >;
+    slug: Schema.Attribute.UID<'name'>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiCategoryCategory extends Struct.CollectionTypeSchema {
   collectionName: 'categories';
   info: {
@@ -654,6 +688,51 @@ export interface ApiOffreOffre extends Struct.SingleTypeSchema {
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+  };
+}
+
+export interface ApiRealisationRealisation extends Struct.CollectionTypeSchema {
+  collectionName: 'realisations';
+  info: {
+    displayName: 'R\u00E9alisations';
+    pluralName: 'realisations';
+    singularName: 'realisation';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    capacite: Schema.Attribute.String;
+    category_realisation: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::category-realisation.category-realisation'
+    >;
+    cover: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'> &
+      Schema.Attribute.Required;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    date: Schema.Attribute.Date;
+    description: Schema.Attribute.Text & Schema.Attribute.Required;
+    gallery: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios',
+      true
+    > &
+      Schema.Attribute.Required;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::realisation.realisation'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    slug: Schema.Attribute.UID<'titre'>;
+    titre: Schema.Attribute.String & Schema.Attribute.Required;
+    unit: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    ville: Schema.Attribute.String & Schema.Attribute.Required;
   };
 }
 
@@ -1168,12 +1247,14 @@ declare module '@strapi/strapi' {
       'admin::user': AdminUser;
       'api::article.article': ApiArticleArticle;
       'api::author.author': ApiAuthorAuthor;
+      'api::category-realisation.category-realisation': ApiCategoryRealisationCategoryRealisation;
       'api::category.category': ApiCategoryCategory;
       'api::child.child': ApiChildChild;
       'api::expertise.expertise': ApiExpertiseExpertise;
       'api::faq.faq': ApiFaqFaq;
       'api::global.global': ApiGlobalGlobal;
       'api::offre.offre': ApiOffreOffre;
+      'api::realisation.realisation': ApiRealisationRealisation;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;
