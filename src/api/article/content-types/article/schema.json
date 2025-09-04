@@ -53,6 +53,14 @@
         "shared.rich-text",
         "shared.slider"
       ]
+    },
+    "titre_google": {
+      "type": "string",
+      "maxLength": 70
+    },
+    "description_google": {
+      "type": "text",
+      "maxLength": 160
     }
   }
 }

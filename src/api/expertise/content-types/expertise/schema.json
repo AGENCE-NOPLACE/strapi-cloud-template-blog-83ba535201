@@ -57,6 +57,10 @@
       "relation": "oneToMany",
       "target": "api::child.child",
       "mappedBy": "expertise"
+    },
+    "order": {
+      "type": "integer",
+      "required": true
     }
   }
 }
